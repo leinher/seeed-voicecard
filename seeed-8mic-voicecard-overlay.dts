@@ -27,12 +27,13 @@
 		target = <&gpio>;
 		__overlay__ {
 			spk_amp_pins: spk_pins {
-				brcm,pins = <17 22>;
+				brcm,pins = <27 6>; /* SPK_SHDN IRQ */
 				brcm,function = <1 0>; /* out in */
 				brcm,pull = <0 0>;     /* -   - */
 			};
-			gpclk0_pins: gpclk0_pins {
-				brcm,pins = <4>;
+
+			gpclk1_pins: gpclk1_pins {
+				brcm,pins = <5>;
 				brcm,function = <4>; /* alt func 0 */
 				brcm,pull = <0>;     /* - */
 			};
@@ -49,9 +50,9 @@
 			ac101: ac101@1a{
 				compatible = "x-power,ac101";
 				pinctrl-names = "default";
-				pinctrl-0 = <&spk_amp_pins &gpclk0_pins>;
-				spk-amp-switch-gpios = <&gpio 17 0>;
-				switch-irq-gpios = <&gpio 22 0>;
+				pinctrl-0 = <&spk_amp_pins &gpclk1_pins>;
+				spk-amp-switch-gpios = <&gpio 27 0>;
+				switch-irq-gpios = <&gpio 6 0>;
 				reg = <0x1a>;
 				#sound-dai-cells = <0>;
 			};
